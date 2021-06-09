@@ -10,10 +10,10 @@ target = np.array(data.iloc[:,-1])
 
 def learn(concepts, target):
     specific_h = concepts[0].copy()
-    # print("Initialization Of Specific Hypothesis & General Hypothesis : ")
-    # print(specific_h)
+    print("Initialization Of Specific Hypothesis & General Hypothesis : ")
+    print(specific_h)
     general_h=[["?" for i in range(len(specific_h))] for i in range(len(specific_h))]
-    # print(general_h)
+    print(general_h)
 
     for i, h in enumerate(concepts):
         if target[i] == "yes":
@@ -21,8 +21,8 @@ def learn(concepts, target):
                 if h[x] != specific_h[x]:
                     specific_h[x] = '?'
                     general_h[x][x] = '?'
-        #         print(specific_h)
-        # print(specific_h)
+                print(specific_h)
+        print(specific_h)
 
         if target[i] == "no":
             for x in range(len(specific_h)):
@@ -30,9 +30,9 @@ def learn(concepts, target):
                     general_h[x][x] = specific_h[x]
                 else:
                     general_h[x][x] = '?'
-        # print("Steps of Candidate Elimination Algorithm: ",i+1)
-        # print(specific_h)
-        # print(general_h)
+        print("Steps of Candidate Elimination Algorithm: ",i+1)
+        print(specific_h)
+        print(general_h)
     indices = [i for i, val in enumerate(general_h) if val == ['?','?','?','?','?','?']]
     for i in indices:
         general_h.remove(['?','?','?','?','?','?'])
